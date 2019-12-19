@@ -1,0 +1,218 @@
+{
+  "phrases" : {
+  "a" : "Splendid occasion",
+  "b" : "Marvellous occasion",
+  "c" : "Outstanding occasion",
+  "d" : "Outstanding champagne",
+  "e" : "Just a little more champagne ?",
+  "f" : "I always appreciate a good champagne",
+  "g" : "I always appreciate a good wedding",
+  "h" : "The flowers ! What wonderful flowers",
+  "i" : "Doesn't the bride look magnificent",
+  "j" : "The groom is simply charming",
+  "k" : "What a glamorous outfit",
+  "l" : "My my don't you look dapper",
+  "m" : "What ?",
+  "n" : "Can you speak a little louder ?",
+  "o" : "Isn't it very noisy in here",
+  "x" : "but I do wonder when we'll be eating..."
+  },
+
+  "tables": [
+    {
+      "table": 1,
+      "opener": "a",
+      "excuse": "Erm sorry I think I'm at the wrong party",
+      "mappings": {
+        "a" :	"b",
+        "b"	: "a",
+        "c" : "a",
+        "d" :	["d", "g"],
+        "o" : "x",
+        "x" : 2
+      }
+    },
+    {
+      "table": 2,
+      "opener": "b",
+      "excuse": "Erm sorry I think I'm at the wrong party",
+      "mappings": {
+        "a" : "x",
+        "b"	: "c",
+        "c" :	"b",
+        "d" :	"b",
+        "e" :	["e", "c"],
+        "x" : 3
+      }
+    },
+    {
+      "table": 3,
+      "opener": "c",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "b":"x",
+        "c":"d",
+        "d":"c",
+        "e":"c",
+        "f": ["f", "d"],
+        "x" : 4
+      }
+    },
+    {
+      "table": 4,
+      "opener": "d",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "c":"x",
+        "d":"e",
+        "e":"d",
+        "f":"d",
+        "g": ["g", "e"],
+        "x" : 5
+      }
+    },
+    {
+      "table": 5,
+      "opener": "e",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "d":"x",
+        "e":"f",
+        "f":"e",
+        "g":"e",
+        "h": ["h", "f"],
+        "x" : 6
+      }
+    },
+    {
+      "table": 6,
+      "opener": "f",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "e":"x",
+        "f":"g",
+        "g":"f",
+        "h":"f",
+        "i": ["i","g"],
+        "x" : 7
+      }
+    },
+    {
+      "table": 7,
+      "opener": "g",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "f":"x",
+        "g":"h",
+        "h":"g",
+        "i":"g",
+        "j": ["j","h"],
+        "x" : 8
+      }
+    },
+    {
+      "table": 8,
+      "opener": "h",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "g":"x",
+        "h":"i",
+        "i":"h",
+        "j":"h",
+        "k": ["k", "i"],
+        "x" : 9
+      }
+    },
+    {
+      "table": 9,
+      "opener": "i",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "h":"x",
+        "i":"j",
+        "j":"i",
+        "k":"i",
+        "l": ["l", "j"],
+        "x" : 10
+      }
+    },
+    {
+      "table": 10,
+      "opener": "j",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "i":"x",
+        "j":"k",
+        "k":"j",
+        "l":"j",
+        "m": ["m","k"],
+        "x" : 11
+      }
+    },
+    {
+      "table": 11,
+      "opener": "k",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "j":"x",
+        "k":"l",
+        "l":"k",
+        "m":"k",
+        "n":["n","l"],
+        "x" : 12
+      }
+    },
+    {
+      "table": 12,
+      "opener": "l",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "k":"x",
+        "l":"m",
+        "m":"l",
+        "n":"l",
+        "o": ["o","m"],
+        "x" : 13
+      }
+    },
+    {
+      "table": 13,
+      "opener": "m",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "l":"x",
+        "m":"n",
+        "n":"m",
+        "o":"m",
+        "a": ["a","n"],
+        "x" : 14
+      }
+    },
+    {
+      "table": 14,
+      "opener": "n",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "a":"n",
+        "m":"x",
+        "n":"o",
+        "o":"n",
+        "b": ["b","o"],
+        "x" : 15
+      }
+    },
+    {
+      "table": 15,
+      "opener": "o",
+      "excuse": "Ooh I'm a little giddy",
+      "mappings": {
+        "n":"x",
+        "o":"a",
+        "a":"o",
+        "b":"o",
+        "c":["c","a"],
+        "x" : 1
+      }
+    }
+  ]
+}
