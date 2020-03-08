@@ -4,6 +4,7 @@ import math
 from random import randint
 from random import shuffle
 import json
+import re
 
 phrases = [
 "Splendid occasion",
@@ -57,7 +58,9 @@ def wrapText(text, font, w):
 			t_text = text[:i]
 			r_text = text[i+1:]
 			break
+
 	return t_text + "\n" + wrapText(r_text, font, w)
+
 
 def choose(items):
 	i = randint(0, len(items)-1)
@@ -67,15 +70,15 @@ def choose(items):
 
 def drawMappings(draw, table):
 	table_top = height/8
-	table_bottom = height * 15/16
+	table_bottom = height * 7/8
 
 	draw.line((width/2, 0, width/2, height), fill=100)
 	draw.line((width * 3/4, table_top, width * 3/4, table_bottom), fill=0)
 
 	o = centerText("They say", normal_fnt, width/4)
-	draw.text((width/2 + o,table_top), "They say", font=normal_fnt, fill=(0))
+	draw.text((width/2 + o,table_top - 10), "They say", font=normal_fnt, fill=(0))
 	o = centerText(" ... you say", normal_fnt, width/4)
-	draw.text((width * 3/4 + o,table_top), " ... you say", font=normal_fnt, fill=(0))
+	draw.text((width * 3/4 + o,table_top - 10), " ... you say", font=normal_fnt, fill=(0))
 
 	draw.line((width/2, table_top + normal_size, width, table_top + normal_size), fill=100)
 
@@ -107,9 +110,9 @@ def drawMappings(draw, table):
 		running_y += v + normal_size
 		draw.line((width/2, running_y, width, running_y), fill=100)
 
-	draw.text((width/2 + offset_x,running_y), " ? ? ? ", font=normal_fnt, fill=(0))
-	t = wrapText(table["excuse"], normal_fnt, width/4 - offset_x * 2)
-	draw.text((width *3/4 + offset_x,running_y), t, font=normal_fnt, fill=(0))
+	e = centerText("Excuse: " + table["excuse"], normal_fnt ,width/2)
+	draw.text((e + width/2 ,table_bottom + 10), "Excuse: " + table["excuse"], font=normal_fnt, fill=(0))
+
 
 #################################### MAIN ####################################
 
@@ -122,31 +125,16 @@ def drawCardInner(person, table):
 	draw = ImageDraw.Draw(im)
 
 
-	### title page and instructions
 	v = 10
-	# t1 = "Simon and Marguerite's"
-	# o = centerText(t1, normal_fnt,width/2)
-	# draw.text((o,v), t1,font=normal_fnt, fill=(0))
-	# s = normal_fnt.getsize(t1)
-	# v += s[1]
-	#
-	# t2 = "Conversation Piece"
-	# o = centerText(t2, title_fnt,width/2)
-	# draw.text((o,v), t2, font=title_fnt, fill=(0))
-	# s = title_fnt.getsize(t2)
-	# v += s[1]
-	# o = centerText(person, normal_fnt ,width/2)
-	# draw.text((o,v), person, font=normal_fnt, fill=(0))
-	# s = normal_fnt.getsize(t2)
-	# v += s[1] + 20
 
 	### instructions
 
 	for line in instructions:
-		wrapped = wrapText(line,small_fnt,width/2)
-		draw.text((10,v),wrapped,font=normal_fnt, fill=(0))
-		s = small_fnt.getsize_multiline(wrapped)
-		v += s[1]
+		wrapped = wrapText(line,normal_fnt,width * 7/16)
+
+		draw.text((width/32,v),wrapped,font=normal_fnt, fill=(0))
+		s = normal_fnt.getsize_multiline(wrapped)
+		v += s[1] + 20
 
 
 	### second page
@@ -168,9 +156,8 @@ width = math.floor(1.4142857 * res)
 height = res
 
 # get a font
-title_fnt = ImageFont.truetype('./Chocolat.ttf', 100)
-normal_fnt = ImageFont.truetype('./Alice-regular.ttf', 35)
-small_fnt = ImageFont.truetype('./Alice-regular.ttf', 35)
+#title_fnt = ImageFont.truetype('fonts/Chocolat.ttf', 100)
+normal_fnt = ImageFont.truetype('fonts/victoria.ttf', 35)
 normal_size = 35
 
 
@@ -183,11 +170,11 @@ with open('people.json') as json_file:
 with open('instructions.txt', "r") as txt_file:
 	instructions = []
 	for line in txt_file:
-		instructions.append(line) #TODO remove /n 
-		print(wrapText(line,normal_fnt,width/2))
+		line = re.sub('\n$', '',line)
+		instructions.append(line)
 
-# for p in people:
-# 	d = data["tables"][p[1] - 1]
-# 	drawCardInner(p[0],d)
+for p in people:
+	d = data["tables"][p[1] - 1]
+	drawCardInner(p[0],d)
 
 exit()
